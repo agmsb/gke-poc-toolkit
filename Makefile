@@ -18,6 +18,8 @@ help:
 	@echo	''
 	@echo '	make destroy        	        Destroy Cluster and associated resources'
 	@echo	''
+	@echo ' make start-config-sync-demo		Bootstrap git repo for cluster config'
+	@echo 	''
 	@echo '	make start-wi-demo	        Boot strap the workload identity demo into GKE'
 	@echo	''
 	@echo '	make stop-wi-demo	        Delete workload identity demo resources from GKE'
@@ -41,6 +43,10 @@ stop-proxy:
 .PHONY: destroy
 destroy:
 	@source scripts/destroy_cluster.sh
+
+.PHONY: start-config-sync-demo
+start-config-sync-demo:
+	@source scripts/start_configsync_demo.sh
 
 .PHONY: start-wi-demo
 start-wi-demo:
