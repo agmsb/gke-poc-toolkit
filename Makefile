@@ -18,7 +18,9 @@ help:
 	@echo	''
 	@echo '	make destroy        	        Destroy Cluster and associated resources'
 	@echo	''
-	@echo ' make start-config-sync-demo		Bootstrap git repo for cluster config'
+	@echo ' make start-config-sync-demo		Bootstrap config sync and GKE demo'
+	@echo 	''
+	@echo ' make stop-config-sync-demo		Delete config sync demo resources'
 	@echo 	''
 	@echo '	make start-wi-demo	        Boot strap the workload identity demo into GKE'
 	@echo	''
@@ -47,6 +49,10 @@ destroy:
 .PHONY: start-config-sync-demo
 start-config-sync-demo:
 	@source scripts/start_configsync_demo.sh
+
+.PHONY: stop-config-sync-demo
+start-config-sync-demo:
+	@source scripts/stop_configsync_demo.sh
 
 .PHONY: start-wi-demo
 start-wi-demo:
