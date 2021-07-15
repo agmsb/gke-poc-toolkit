@@ -1,0 +1,7 @@
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: quota
+spec:
+  hard:
+    CPU: "30"
