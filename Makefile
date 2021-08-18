@@ -5,6 +5,8 @@ SHELL := /usr/bin/env bash
 help:
 	@echo 'Usage:'
 	
+	@echo '	make shared-vpc        		Create Shared VPC in a pre-existing host project'
+	@echo	''
 	@echo '	make create        		Create Cluster and associated resources'
 	@echo	''
 	@echo '	make secure        		Create GCS + Big Query log sinks for GKE Audit'
@@ -24,25 +26,30 @@ help:
 	@echo	''
 	@echo '	make stop-wi-demo	        Delete workload identity demo resources from GKE'
 	@echo	''
+
+.PHONY: shared-vpc
+shared-vpc:
+	@source	scripts/create.sh vpc
+
 .PHONY: create
 create:
-	@source	scripts/create_cluster.sh
+	@source	scripts/create.sh cluster
 
 .PHONY: secure
 secure:
-	@source scripts/secure_cluster.sh
+	@source scripts/create.sh secure
 
 .PHONY: start-proxy
 start-proxy:
-	@source scripts/proxy_connection.sh
+	@source scripts/proxy_connection.sh start
 
 .PHONY: stop-proxy
 stop-proxy:
-	@source scripts/stop_proxy_connection.sh
+		@source scripts/proxy_connection.sh stop
 
 .PHONY: destroy
 destroy:
-	@source scripts/destroy_cluster.sh
+	@source scripts/destroy_cluster.sh cluster
 
 .PHONY: start-config-sync-demo
 start-config-sync-demo:
@@ -50,8 +57,8 @@ start-config-sync-demo:
 
 .PHONY: start-wi-demo
 start-wi-demo:
-	@source scripts/start-wi-demo.sh
+	@source scripts/workload_identity_demo.sh start
 
 .PHONY: stop-wi-demo
 stop-wi-demo:
-	@source scripts/stop-wi-demo.sh
+	@source scripts/workload_identity_demo.sh stop

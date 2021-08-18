@@ -38,7 +38,7 @@ crash.log
 # example.tfvars
 
 terraform.tfvars
-
+backend.tf
 # gcloud service account credentials
 credentials.json
 creds/
@@ -48,3 +48,9 @@ creds/
 # terraform locks
 .terraform.lock.hcl
 
+# local bash command file
+_local.sh
+
+## Ignore cluster_config vars file
+cluster_config
+github.key
